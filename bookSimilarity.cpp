@@ -61,7 +61,7 @@ map<string, double> getTopWords(const string &filePath) {
     }
     file.close();
 
-    // Calculate normalized frequency for each word and store in a vector
+    // To Calculate normalized frequency for each word and store in a vector
     vector<pair<string, double>> freqList;
     for (const auto &pair : wordCounts) {
         freqList.push_back({pair.first, static_cast<double>(pair.second) / totalWords});
@@ -98,7 +98,7 @@ double calculateSimilarity(const map<string, double> &freqA, const map<string, d
 void findTopSimilarPairs(const vector<string> &files) {
     int numFiles = files.size();
 
-    // Check that we have exactly 64 files
+    // Check that there are exactly 64 files
     if (numFiles != TOTAL_TEXT_BOOKS) {
         cerr << "Error: Expected " << TOTAL_TEXT_BOOKS << " files, but found " << numFiles << endl;
         return;
@@ -116,7 +116,7 @@ void findTopSimilarPairs(const vector<string> &files) {
         for (int j = i + 1; j < numFiles; j++) {
             double score = calculateSimilarity(fileFrequencies[i], fileFrequencies[j]);
             similarityMatrix[i][j] = score;
-            similarityMatrix[j][i] = score;  // Matrix is symmetric
+            similarityMatrix[j][i] = score;  // The Matrix is symmetric
         }
     }
 
@@ -128,7 +128,7 @@ void findTopSimilarPairs(const vector<string> &files) {
         }
     }
 
-    // Sort the similarity scores in descending order to get the top scores
+    // Sort the similarity scores in descending order to get the top result
     sort(similarityValues.rbegin(), similarityValues.rend());
 
     // Display the top 10 most similar file pairs by name only
